@@ -10,5 +10,9 @@ function writePassword() {
 
 }
 
+function updateTextInput(val) {
+  document.getElementById('textInput').value=val; 
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
