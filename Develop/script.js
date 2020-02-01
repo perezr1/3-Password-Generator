@@ -1,18 +1,45 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+var numChar = "0123456789";
+var capChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowChar = "abcdefghijklmnopqrstuvwxyz";
+var speChar = "!#$%&'()*+,-./:<=>?@[]^_`{|}~";
 
-  passwordText.value = password;
+var passDisplay = document.getElementById("password").value;
 
+var passBtn = document.querySelector("#generate");
+
+passBtn.addEventListener("click", passGen);
+
+function passGen() {
+  passLenCk();
+  var passNum = confirm("Should password has Number?");
+  var passLower = confirm("Should password has lower case?");
+  var passUpper = confirm("Should password has Upper case?");
+  var passSpec = confirm("Should password has Special characters?");
 }
 
-function updateTextInput(val) {
-  document.getElementById('textInput').value=val; 
+function passLenCk() {
+  var passLen = prompt("from 8 to 128, how long shold password be?");
+  if (!((passLen >= 8) & (passLen <= 128))) {
+    alert("wrong range.  Please try again!");
+    passLenCk();
+  }
+  return passLen;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+function passStatus() {
+  var element = "";
+  if (passNum) {
+    element += numChar;
+    if (passLower) {
+      element += lowChar;
+      if (passUpper) {
+        element += capChar;
+        if (passSpec) {
+          element += speChar;
+          console.log(element + "Did I get it?");
+        }
+      }
+    }
+  }
+}

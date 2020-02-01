@@ -24,33 +24,11 @@
       <div class="card-body">
         <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
       </div>
-      
-      <!-- This creates my range for the numbers -->
-      <div id="sec_options">
-        <label for="customRange1">Password Length</label>
-        <input type="range" name="rangeInput" min="8" max="128" onclick=updateTextInput(this.value);>
-        <input type="text" id="textInput" value="">
-      </div>
-
-      <!-- This makes the checkbox for the characters -->
-      <div>
-        <input type="checkbox" name="Symbols" id="Symbols" onclick="S7P(false);">
-        <label for="Symbols">Include Symbols (e.g. @#)</label>
-
-        <input type="checkbox" name="Numbers" id="Numbers" onclick="S7P(false);">
-        <label for="Numbers">Include Numbers (e.g. 123)</label>
-
-        <input type="checkbox" name="Lowercase" id="Lowercase" onclick="S7P(false);">
-        <label for="Lowercase">Include Lowercase (e.g. abc)</label>
-
-        <input type="checkbox" name="Uppercase" id="Uppercase" onclick="S7P( false );">
-        <label for="Uppercase">Uppercase Characters (e.g. ABC)</label>
-      </div>
 
       <!-- This create my red buttons -->
       <div class="card-footer">
         <button id="generate" class="btn">Generate Password</button>
-        <button id="generate" class="btn">Copy Password</button>
+        <button id="copy" class="btn">Copy Password</button>
       </div>
 
     </div>
