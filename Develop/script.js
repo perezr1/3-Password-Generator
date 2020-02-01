@@ -19,7 +19,7 @@ function passGen() {
 }
 
 function passLenCk() {
-  var passLen = prompt("from 8 to 128, how long shold password be?");
+  var passLen = prompt("Who long do you want your password to be?");
   if (!((passLen >= 8) & (passLen <= 128))) {
     alert("wrong range.  Please try again!");
     passLenCk();
