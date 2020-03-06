@@ -10,13 +10,10 @@
 </head>
 
 <body>
-
-  <div class="wrapper">
-
+  <form name="pgenerate">
     <header>
       <h1>Password Generator</h1>
     </header>
-
     <div class="card">
       <div class="card-header">
         <h2>Generate a Password</h2>
@@ -24,19 +21,18 @@
       <div class="card-body">
         <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
       </div>
-
-      <!-- This create my red buttons -->
       <div class="card-footer">
-        <button id="generate" class="btn">Generate Password</button>
-        <button id="copy" class="btn">Copy Password</button>
+        <button onclick="generatePass()" type="button" class="btn">Generate Password</button>
+        <button onclick="copyPass()" type="button" class="btn">Copy to clipboard</button>
       </div>
-
     </div>
+  </form>
 
-  </div>
-  <!-- File linking my JavaScript file -->
+
+  <!-- Connects to my Script.js file -->
   <script src="script.js"></script>
-
 </body>
 
 </html>
+
+

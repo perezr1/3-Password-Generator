@@ -1,45 +1,65 @@
+// Set static variables
+// The split() method is used to split a string into an array of substrings, and returns the new array
 
-var numChar = "0123456789";
-var capChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowChar = "abcdefghijklmnopqrstuvwxyz";
-var speChar = "!#$%&'()*+,-./:<=>?@[]^_`{|}~";
+var lowCharArr = lowChar.split("");
+var capChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var capCharArr = capChar.split("");
+var numChar = "0123456789";
+var numCharArr = numChar.split("");
+var speChar = "!#$%&()*+,-./:;<=>?@^[\\]^_`{|}~";
+var speCharArr = speChar.split("");
 
-var passDisplay = document.getElementById("password").value;
+// Calls the action to generate password
+function generatePass() {
+  var allChars = [];
+  var resultPass = "";
 
-var passBtn = document.querySelector("#generate");
+  // number of characters the user input for the password
+  var passLenCk = prompt("Between 8 and 128 characters, who long should your password be?");
 
-passBtn.addEventListener("click", passGen);
-
-function passGen() {
-  passLenCk();
-  var passNum = confirm("Should password has Number?");
-  var passLower = confirm("Should password has lower case?");
-  var passUpper = confirm("Should password has Upper case?");
-  var passSpec = confirm("Should password has Special characters?");
+  if (passLenCk < 8 || passLenCk > 128) {
+    alert("Please input a value between 8 and 128!");
 }
 
-function passLenCk() {
-  var passLen = prompt("Who long do you want your password to be?");
-  if (!((passLen >= 8) & (passLen <= 128))) {
-    alert("wrong range.  Please try again!");
-    passLenCk();
-  }
-  return passLen;
-}
+  // Checks what options does the user selected
+  else {
+    if (confirm("Should password have lower case?")) {
+        Array.prototype.push.apply(allChars, lowCharArr);
+    }
+    if (confirm("Should password have Upper case?")) {
+      Array.prototype.push.apply(allChars, capCharArr);
+    }
+    if (confirm("Should password have Numbers?")) {
+      Array.prototype.push.apply(allChars, numCharArr);
+    }
+    if (confirm("Should password have Special characters?")) {
+      Array.prototype.push.apply(allChars, speCharArr);
+    }
+    if (allChars.length === 0) {
+      alert(
+        "You must select at lease 1 type of characters to generate a password!"
+      );
+    }
 
-function passStatus() {
-  var element = "";
-  if (passNum) {
-    element += numChar;
-    if (passLower) {
-      element += lowChar;
-      if (passUpper) {
-        element += capChar;
-        if (passSpec) {
-          element += speChar;
-          console.log(element + "Did I get it?");
-        }
+    // Loop that generate the romdon password
+    else {
+      for (var i = 0; i < passLenCk; i++) {
+        var random = Math.floor(Math.random() * allChars.length);
+        resultPass += allChars[random];
       }
     }
   }
+
+  // Display the result
+
+  document.getElementById("password").innerHTML = resultPass;
+}
+
+// This makes the clipboard
+
+function copyPass() {
+  document.querySelector("textarea").select();
+  document.execCommand("Copy");
+  alert("Password copied to clipboard!");
 }
